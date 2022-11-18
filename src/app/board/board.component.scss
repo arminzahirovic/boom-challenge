@@ -1,0 +1,6 @@
+.board-row {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-gap: 5px;
+    margin: 1rem;
+}

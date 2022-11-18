@@ -1,8 +1,9 @@
-.app-component {
-    max-width: 900px;
-    margin: 0 auto;
-
-    h1 {
-        text-align: center;
-    }
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #698ef9;
+    border: 1px solid #000;
+    min-height: calc(100vh - 4rem);
 }
