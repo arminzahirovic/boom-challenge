@@ -1,9 +1,12 @@
 <section class="game">
-    <button>New Game</button>
-    <app-board></app-board>
+    <button (click)="startNewGame()">New Game</button>
+    <app-board *ngIf="(isInProgress$ | async) || (isFinished$ | async)"></app-board>
     <div class="game-information">
-        <span>Wins: </span>
-        <span>Losses: </span>
-        <span>There are x number of bombs and x number of smileys around selected cell</span>
+        <span *ngIf="result">You {{ resultEnum[result] }} the game</span>
+        <span>Wins: {{ wins$ | async }}</span>
+        <span>Losses: {{ losses$ | async }} </span>
+        <span *ngIf="(bombsAround$ | async) && (smileysAround$ | async)">
+            There are {{ bombsAround$ | async }} number of bombs and {{ smileysAround$ | async }} number of smileys around selected cell
+        </span>
     </div>
 </section>

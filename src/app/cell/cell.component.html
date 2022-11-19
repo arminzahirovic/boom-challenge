@@ -1,4 +1,4 @@
 <div class="cell"
      (click)="cellClicked()">
-    <span *ngIf="showValue">{{ cell?.value }}</span>
+    <span *ngIf="!cell?.hidden || gameFinished">{{ cell?.type }}</span>
 </div>

@@ -1,3 +1,6 @@
+import { CellType } from "./CellType.enum";
+
 export interface Cell {
-    value: 'smiley' | 'bomb' | 'reset';
+    type: CellType,
+    hidden: boolean
 }

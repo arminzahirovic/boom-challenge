@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
 import { Cell } from '../domain/Cell.model';
+import { GameStoreSelectors, RootStoreState } from '../root-store';
 
 @Component({
   selector: 'app-board',
@@ -8,132 +12,13 @@ import { Cell } from '../domain/Cell.model';
 })
 export class BoardComponent implements OnInit {
 
-  cells: Cell[][] = [];
+  cells$: Observable<Cell[][]> | undefined;
 
-  constructor() { }
+  constructor(
+    private store: Store<RootStoreState.RootState>
+  ) { }
 
   ngOnInit(): void {
-    this.cells = [
-      [
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell
-      ],
-      [
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell
-      ],
-      [
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell
-      ],
-      [
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell
-      ],
-      [
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell
-      ],
-      [
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell,
-        {
-          value: 'bomb'
-        } as Cell
-      ]
-    ]
+    this.cells$ = this.store.pipe(select(GameStoreSelectors.cells));
   }
 }

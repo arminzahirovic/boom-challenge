@@ -1,6 +1,6 @@
 <section class="board">
     <div class="board-row"
-         *ngFor="let row of cells; let i = index">
+         *ngFor="let row of cells$ | async; let i = index">
          <app-cell *ngFor="let cell of row; let j = index"
                     [cell]="cell"
                     [positionX]="i"
