@@ -38,4 +38,61 @@ export class GameService {
         });
         return surrounding;
     }
+
+    initializeBoard(): Cell[][] {
+        const rows = 6;
+        const columns = 6;
+        const board: Cell[][] = [];
+        let types = [
+            CellType.Bomb,
+            CellType.Smiley,
+            CellType.Reset
+        ];
+        let numberOfBombs = 0;
+        let numberOfSmileys = 0;
+        let numberOfReset = 0;
+
+        for (let i = 0; i < rows; i++) {
+
+            const row = [];
+            for (let j = 0; j < columns; j++) {
+                const randomIndex = Math.floor(Math.random() * types.length);
+                const cell: Cell = {
+                    type: types[randomIndex],
+                    hidden: true
+                };
+                row.push(cell);
+
+                let removeType = false;
+                switch(types[randomIndex]) {
+                    case CellType.Bomb:
+                        numberOfBombs++;
+                        if (numberOfBombs === 12) {
+                            removeType = true;
+                        }
+                        break;
+                    case CellType.Smiley:
+                        numberOfSmileys++;
+                        if (numberOfSmileys === 12) {
+                            removeType = true;
+                        }
+                        break;
+                    case CellType.Reset:
+                        numberOfReset++;
+                        if (numberOfReset === 12) {
+                            removeType = true;
+                        }
+                        break;
+                }
+
+                if (removeType) {
+                    types = types.filter((type) => type !== types[randomIndex]);
+                }
+            }
+
+            board.push(row);
+        }
+
+        return board;
+    }
 }

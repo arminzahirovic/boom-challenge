@@ -3,6 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Cell } from '../domain/Cell.model';
+import { CellType } from '../domain/CellType.enum';
 import { Position } from '../domain/Position.model';
 import { GameStoreActions, GameStoreSelectors, RootStoreState } from '../root-store';
 
@@ -20,14 +21,16 @@ export class CellComponent implements OnInit {
 
   loaded = false;
   gameFinished = false;
+  emoji = '';
 
   constructor(
     private store: Store<RootStoreState.RootState>
   ) { }
 
   ngOnInit(): void {
-    if (this.cell && this.positionX && this.positionY) {
+    if (this.cell) {
       this.loaded = true;
+      this.setEmoji(this.cell.type);
     }
 
     this.isFinished$ = this.store.pipe(select(GameStoreSelectors.isFinished));
@@ -50,5 +53,19 @@ export class CellComponent implements OnInit {
         position
       }
     ));
+  }
+
+  setEmoji(type: CellType): void {
+    switch(type) {
+      case CellType.Bomb:
+        this.emoji = '💥';
+        break;
+      case CellType.Smiley:
+        this.emoji = '😀';
+        break;
+      case CellType.Reset:
+        this.emoji = '🌀';
+        break;
+    }
   }
 }

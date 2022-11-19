@@ -10,6 +10,16 @@ import { GameStoreActions, GameStoreSelectors } from ".";
 @Injectable()
 export class GameEffects {
 
+    startGame$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(GameStoreActions.startGame),
+            map(() => {
+                const randomCells = this.gameService.initializeBoard();
+                return GameStoreActions.setBoard({ board: randomCells });
+            })
+        )
+    );
+
     cellClicked$ = createEffect(
         () => this.actions$.pipe(
             ofType(GameStoreActions.selectCell),
