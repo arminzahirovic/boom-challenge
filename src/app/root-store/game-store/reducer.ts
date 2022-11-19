@@ -3,7 +3,9 @@ import { createReducer, on } from "@ngrx/store"
 import { Cell } from "src/app/domain/Cell.model";
 import { CellType } from "src/app/domain/CellType.enum"
 import { Result } from "src/app/domain/Result.enum";
-import { finishGame, startGame, selectCell, noopAction, addLoss, addWin, setWinsAndLosses, setSurrounding, setBoard } from "./actions"
+import { 
+    finishGame, startGame, selectCell, noopAction, addLoss, addWin, setWinsAndLosses, setSurrounding, setBoard 
+} from "./actions"
 
 import { initialGameState } from "./state"
 
@@ -49,7 +51,7 @@ export const gameFeatureReducer = createReducer(
             case CellType.Bomb:
                 return {
                     ...state,
-                    conscutiveBombs: state.conscutiveBombs + 1,
+                    consecutiveBombs: state.consecutiveBombs + 1,
                     consecutiveSmileys: 0,
                     numberOfPlays: state.numberOfPlays + 1,
                     board,
@@ -59,7 +61,7 @@ export const gameFeatureReducer = createReducer(
             case CellType.Smiley:
                 return {
                     ...state,
-                    conscutiveBombs: 0,
+                    consecutiveBombs: 0,
                     consecutiveSmileys: state.consecutiveSmileys + 1,
                     numberOfPlays: state.numberOfPlays + 1,
                     board,
@@ -69,7 +71,7 @@ export const gameFeatureReducer = createReducer(
             case CellType.Reset:
                 return {
                     ...state,
-                    conscutiveBombs: 0,
+                    consecutiveBombs: 0,
                     consecutiveSmileys: 0,
                     numberOfPlays: state.numberOfPlays + 1,
                     board
@@ -86,7 +88,7 @@ export const gameFeatureReducer = createReducer(
     on(addLoss, (state, action) => {
         return {
             ...state,
-            conscutiveBombs: 0,
+            consecutiveBombs: 0,
             losses: state.losses + 1,
             result: Result.lost
         }

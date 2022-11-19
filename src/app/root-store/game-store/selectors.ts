@@ -32,7 +32,7 @@ export const numberOfPlays = createSelector(
 
 export const consecutiveBombs = createSelector(
     selectGameState,
-    state => state.conscutiveBombs
+    state => state.consecutiveBombs
 )
 
 export const consecutiveSmileys = createSelector(

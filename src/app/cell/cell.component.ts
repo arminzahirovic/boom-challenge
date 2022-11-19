@@ -21,6 +21,7 @@ export class CellComponent implements OnInit {
 
   loaded = false;
   gameFinished = false;
+  selected = false;
   emoji = '';
 
   constructor(

@@ -1,4 +1,4 @@
 export enum Result {
-    won,
-    lost
+    won = "won",
+    lost = "lost"
 }

@@ -1,5 +1,4 @@
 import { Cell } from "src/app/domain/Cell.model";
-import { CellType } from "src/app/domain/CellType.enum";
 import { Result } from "src/app/domain/Result.enum";
 
 export interface GameState {
@@ -10,7 +9,7 @@ export interface GameState {
     bombsAround: number;
     smileysAround: number;
     consecutiveSmileys: number;
-    conscutiveBombs: number;
+    consecutiveBombs: number;
     numberOfPlays: number;
     board: Cell[][];
     result: Result | undefined;
@@ -24,7 +23,7 @@ export const initialGameState: GameState = {
     bombsAround: 0,
     smileysAround: 0,
     consecutiveSmileys: 0,
-    conscutiveBombs: 0,
+    consecutiveBombs: 0,
     numberOfPlays: 0,
     board: [],
     result: undefined

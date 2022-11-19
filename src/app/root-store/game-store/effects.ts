@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { map, tap, withLatestFrom } from "rxjs/operators";
+import { map, withLatestFrom } from "rxjs/operators";
 import { CellType } from "src/app/domain/CellType.enum";
 import { GameService } from "src/app/services/games.service";
 
@@ -25,7 +25,7 @@ export class GameEffects {
             ofType(GameStoreActions.selectCell),
             withLatestFrom(
                 this.store.select(GameStoreSelectors.consecutiveBombs),
-                this.store.select(GameStoreSelectors.consecutiveSmileys),
+                this.store.select(GameStoreSelectors.consecutiveSmileys), 
                 this.store.select(GameStoreSelectors.cells)
             ),
             map(([action, consecutiveBombs, consecutiveSmileys, cells]) => {
@@ -89,16 +89,6 @@ export class GameEffects {
                 return GameStoreActions.finishGame({ wins, losses });
             })
         )
-    );
-
-    finishGame$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(GameStoreActions.finishGame),
-            tap((action) => {
-                localStorage.setItem("losses", action.losses.toString());
-                localStorage.setItem("wins", action.wins.toString());
-            })
-        ), {dispatch: false}
     );
 
     setSurrounding$ = createEffect(

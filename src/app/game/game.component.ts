@@ -28,12 +28,6 @@ export class GameComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const wins = localStorage.getItem('wins');
-    const losses = localStorage.getItem('losses');
-    if (wins || losses) {
-      this.store.dispatch(GameStoreActions.setWinsAndLosses({ wins: Number(wins), losses: Number(losses) }));
-    }
-
     this.wins$ = this.store.pipe(select(GameStoreSelectors.wins));
     this.losses$ = this.store.pipe(select(GameStoreSelectors.losses));
     this.bombsAround$ = this.store.pipe(select(GameStoreSelectors.bombsAround));
