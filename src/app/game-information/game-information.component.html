@@ -1,0 +1,10 @@
+<div class="game-information">
+    <span *ngIf="result">You {{ resultEnum[result] }} the game</span>
+    <span *ngIf="(bombsAround$ | async) || (smileysAround$ | async)">
+        There are {{ bombsAround$ | async }} bombs and {{ smileysAround$ | async }} smileys around selected cell
+    </span>
+    <div *ngIf="!result">
+        <div>Number of consecutive bombs {{ consecutiveBombs$ | async }}</div>
+        <div>Number of consecutive smileys {{ consecutiveSmileys$ | async }}</div>
+    </div>
+</div>

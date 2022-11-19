@@ -7,13 +7,15 @@ import { BoardComponent } from './board/board.component';
 import { CellComponent } from './cell/cell.component';
 import { RootStoreModule } from './root-store/root-store.module';
 import { GameService } from './services/games.service';
+import { GameInformationComponent } from './game-information/game-information.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponent,
     BoardComponent,
-    CellComponent
+    CellComponent,
+    GameInformationComponent
   ],
   imports: [
     BrowserModule,

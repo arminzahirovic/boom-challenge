@@ -1,12 +1,13 @@
 <section class="game">
-    <span *ngIf="(bombsAround$ | async) || (smileysAround$ | async)">
-        There are {{ bombsAround$ | async }} bombs and {{ smileysAround$ | async }} smileys around selected cell
-    </span>
-    <span *ngIf="result">You {{ resultEnum[result] }} the game</span>
-    <button (click)="startNewGame()">New Game</button>
-    <app-board *ngIf="(isInProgress$ | async) || (isFinished$ | async)"></app-board>
-    <div class="game-information">
-        <span>Wins: {{ wins$ | async }}</span>
-        <span>Losses: {{ losses$ | async }} </span>
+    <div class="game-header">
+        <div>
+            <h1>{{ title }}</h1>
+            <button (click)="startNewGame()">New Game</button>
+            <div>
+                <span>Wins: {{ wins$ | async }} Losses: {{ losses$ | async }}</span>
+            </div>
+        </div>
+        <app-game-information *ngIf="(isInProgress$ | async) || (isFinished$ | async)"></app-game-information>
     </div>
+    <app-board *ngIf="(isInProgress$ | async) || (isFinished$ | async)"></app-board>
 </section>

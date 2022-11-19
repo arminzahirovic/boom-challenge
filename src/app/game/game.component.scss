@@ -4,9 +4,10 @@
     flex-direction: column;
     align-items: center;
 
-    .game-information {
-        display: flex;
-        flex-direction: column;
+    .game-header {
+        display: grid;
+        grid-template-columns: auto auto;
         color: #fff;
+        width: 100%;
     }
 }
