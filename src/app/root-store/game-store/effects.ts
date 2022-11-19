@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { map, tap, withLatestFrom } from "rxjs/operators";
+import { CellType } from "src/app/domain/CellType.enum";
+import { GameService } from "src/app/services/games.service";
 
 import { GameStoreActions, GameStoreSelectors } from ".";
 
@@ -14,9 +16,14 @@ export class GameEffects {
             withLatestFrom(
                 this.store.select(GameStoreSelectors.consecutiveBombs),
                 this.store.select(GameStoreSelectors.consecutiveSmileys),
-                this.store.select(GameStoreSelectors.numberOfPlays)
+                this.store.select(GameStoreSelectors.cells)
             ),
-            map(([action, consecutiveBombs, consecutiveSmileys, numberOfPlays]) => {
+            map(([action, consecutiveBombs, consecutiveSmileys, cells]) => {
+                if (action.valueType === CellType.Reset) {
+                    const surrounding = this.gameService.findSurroundingElauements(cells, action.position);
+                    return GameStoreActions.setSurrounding(surrounding);
+                }
+
                 if (consecutiveBombs === 2) {
                     return GameStoreActions.addLoss();
                 }
@@ -84,8 +91,18 @@ export class GameEffects {
         ), {dispatch: false}
     );
 
+    setSurrounding$ = createEffect(
+        () => this.actions$.pipe(
+            ofType(GameStoreActions.setSurrounding),
+            map(() => {
+                return GameStoreActions.turnPlayed();
+            })
+        )
+    );
+
     constructor(
         private actions$: Actions,
-        private store: Store
+        private store: Store,
+        private gameService: GameService
     ) { }
 }

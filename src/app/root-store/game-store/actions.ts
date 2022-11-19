@@ -1,6 +1,7 @@
 import { createAction, props } from "@ngrx/store"
 
 import { SelectCell } from "src/app/domain/SelectCell.model"
+import { Surrounding } from "src/app/domain/Surrounding.model"
 
 enum ActionTypes {
     START_NEW_GAME = "[New Game] Set in progress to true",
@@ -10,7 +11,8 @@ enum ActionTypes {
     SELECT_CELL = "[Cell component] Cell selected",
     TURN_PLAYED = "[Select cell effect] Turn played",
     NOOP_ACTION = "[Turn played effect] Noop action",
-    SET_WINS_AND_LOSSES = "[Game Component] Set wins and losses"
+    SET_WINS_AND_LOSSES = "[Game Component] Set wins and losses",
+    SET_SURROUNDING = "[Select cell effect] Set number of bombms and smileys in surroundings"
 }
 
 export const startGame = createAction(
@@ -46,4 +48,9 @@ export const turnPlayed = createAction(
 
 export const noopAction = createAction(
     ActionTypes.NOOP_ACTION
+)
+
+export const setSurrounding = createAction(
+    ActionTypes.SET_SURROUNDING,
+    props<Surrounding>()
 )

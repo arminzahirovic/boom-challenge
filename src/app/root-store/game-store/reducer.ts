@@ -3,7 +3,7 @@ import { createReducer, on } from "@ngrx/store"
 import { Cell } from "src/app/domain/Cell.model";
 import { CellType } from "src/app/domain/CellType.enum"
 import { Result } from "src/app/domain/Result.enum";
-import { finishGame, startGame, selectCell, noopAction, addLoss, addWin, setWinsAndLosses } from "./actions"
+import { finishGame, startGame, selectCell, noopAction, addLoss, addWin, setWinsAndLosses, setSurrounding } from "./actions"
 
 import { initialGameState } from "./state"
 
@@ -52,7 +52,9 @@ export const gameFeatureReducer = createReducer(
                     conscutiveBombs: state.conscutiveBombs + 1,
                     consecutiveSmileys: 0,
                     numberOfPlays: state.numberOfPlays + 1,
-                    board
+                    board,
+                    bombsAround: 0,
+                    smileysAround: 0
                 }
             case CellType.Smiley:
                 return {
@@ -60,7 +62,9 @@ export const gameFeatureReducer = createReducer(
                     conscutiveBombs: 0,
                     consecutiveSmileys: state.consecutiveSmileys + 1,
                     numberOfPlays: state.numberOfPlays + 1,
-                    board
+                    board,
+                    bombsAround: 0,
+                    smileysAround: 0
                 }
             case CellType.Reset:
                 return {
@@ -102,6 +106,14 @@ export const gameFeatureReducer = createReducer(
             ...state,
             wins: action.wins,
             losses: action.losses
+        }
+    }),
+
+    on(setSurrounding, (state, action) => {
+        return {
+            ...state,
+            bombsAround: action.bombs,
+            smileysAround: action.smileys
         }
     })
 )

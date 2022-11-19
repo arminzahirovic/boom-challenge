@@ -6,6 +6,7 @@ import { GameComponent } from './game/game.component';
 import { BoardComponent } from './board/board.component';
 import { CellComponent } from './cell/cell.component';
 import { RootStoreModule } from './root-store/root-store.module';
+import { GameService } from './services/games.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { RootStoreModule } from './root-store/root-store.module';
     BrowserModule,
     RootStoreModule
   ],
-  providers: [],
+  providers: [GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
