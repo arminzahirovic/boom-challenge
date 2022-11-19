@@ -1,13 +1,20 @@
-import { createReducer, on } from "@ngrx/store"
+import { createReducer, on } from "@ngrx/store";
 
 import { Cell } from "src/app/domain/Cell.model";
-import { CellType } from "src/app/domain/CellType.enum"
+import { CellType } from "src/app/domain/CellType.enum";
 import { Result } from "src/app/domain/Result.enum";
-import { 
-    finishGame, startGame, selectCell, noopAction, addLoss, addWin, setWinsAndLosses, setSurrounding, setBoard 
-} from "./actions"
-
-import { initialGameState } from "./state"
+import {
+    startGame,
+    finishGame,
+    selectCell,
+    noopAction,
+    addLoss,
+    addWin,
+    setWinsAndLosses,
+    setSurrounding,
+    setBoard
+ } from "./actions";
+import { initialGameState } from "./state";
 
 export const gameFeatureKey = 'game';
 

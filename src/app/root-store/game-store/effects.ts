@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { map, withLatestFrom } from "rxjs/operators";
+
 import { CellType } from "src/app/domain/CellType.enum";
 import { GameService } from "src/app/services/games.service";
 

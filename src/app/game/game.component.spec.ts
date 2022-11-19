@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { expect } from '@jest/globals';
 
 import { GameComponent } from './game.component';
 
-describe('GameComponent', () => {
+xdescribe('GameComponent', () => {
   let component: GameComponent;
   let fixture: ComponentFixture<GameComponent>;
 
@@ -19,5 +20,18 @@ describe('GameComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it(`should have as title 'boom-challenge'`, () => {
+    const fixture = TestBed.createComponent(GameComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('boom-challenge');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(GameComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.content span')?.textContent).toContain('boom-challenge app is running!');
   });
 });
