@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action, Store } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
-import { SubscriberSpy, subscribeSpyTo } from '@hirez_io/observer-spy'
+import { SubscriberSpy, subscribeSpyTo } from '@hirez_io/observer-spy';
 
 import { GameService } from 'src/app/game-feature/services/games.service';
 import { GameEffects } from './effects';
