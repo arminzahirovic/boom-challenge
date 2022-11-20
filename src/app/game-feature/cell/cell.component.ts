@@ -47,12 +47,7 @@ export class CellComponent implements OnInit {
       y: this.positionY
     };
 
-    this.store.dispatch(GameStoreActions.selectCell(
-      { 
-        valueType: this.cell.type,
-        position
-      }
-    ));
+    this.store.dispatch(GameStoreActions.selectCell(position));
   }
 
   setEmoji(type: CellType): void {

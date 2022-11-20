@@ -19,7 +19,7 @@ const surroundingPositions: Position[] = [
 @Injectable()
 export class GameService {
 
-    findSurroundingElauements(board: Cell[][], selectedElement: Position): Surrounding {
+    findSurroundingElements(board: Cell[][], selectedElement: Position): Surrounding {
         const surrounding = new Surrounding();
         surroundingPositions.forEach((position) => {
             const x = selectedElement.x + position.x;

@@ -59,7 +59,7 @@ describe('GamesService', () => {
         board[1][0] = { type: CellType.Smiley, hidden: true } as Cell;
         board[1][1] = { type: CellType.Reset, hidden: true } as Cell;
 
-        const result = gamesService.findSurroundingElauements(board, selectedElement);
+        const result = gamesService.findSurroundingElements(board, selectedElement);
 
         expect(result.bombs).toBe(1);
         expect(result.smileys).toBe(1);
@@ -80,7 +80,7 @@ describe('GamesService', () => {
         board[2][1] = { type: CellType.Smiley, hidden: true } as Cell;
         board[2][2] = { type: CellType.Reset, hidden: true } as Cell;
 
-        const result = gamesService.findSurroundingElauements(board, selectedElement);
+        const result = gamesService.findSurroundingElements(board, selectedElement);
 
         expect(result.bombs).toBe(2);
         expect(result.smileys).toBe(3);
@@ -96,7 +96,7 @@ describe('GamesService', () => {
         board[4][4] = { type: CellType.Smiley, hidden: true } as Cell;
         board[5][4] = { type: CellType.Reset, hidden: true } as Cell;
 
-        const result = gamesService.findSurroundingElauements(board, selectedElement);
+        const result = gamesService.findSurroundingElements(board, selectedElement);
 
         expect(result.bombs).toBe(1);
         expect(result.smileys).toBe(1);

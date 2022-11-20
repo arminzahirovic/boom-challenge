@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store"
 import { Cell } from "src/app/game-feature/domain/Cell.model"
+import { Position } from "src/app/game-feature/domain/Position.model"
 
 import { SelectCell } from "src/app/game-feature/domain/SelectCell.model"
 import { Surrounding } from "src/app/game-feature/domain/Surrounding.model"
@@ -22,8 +23,7 @@ export const startGame = createAction(
 )
 
 export const finishGame = createAction(
-   ActionTypes.FINISH_GAME,
-   props<{ wins: number, losses: number }>()
+   ActionTypes.FINISH_GAME
 )
 
 export const addWin = createAction(
@@ -34,14 +34,9 @@ export const addLoss = createAction(
     ActionTypes.GAME_LOST
 )
 
-export const setWinsAndLosses = createAction(
-    ActionTypes.SET_WINS_AND_LOSSES,
-    props<{ wins: number, losses: number }>()
-)
-
 export const selectCell = createAction(
     ActionTypes.SELECT_CELL,
-    props<SelectCell>()
+    props<Position>()
 )
 
 export const turnPlayed = createAction(

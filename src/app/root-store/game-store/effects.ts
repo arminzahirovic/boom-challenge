@@ -30,8 +30,8 @@ export class GameEffects {
                 this.store.select(GameStoreSelectors.cells)
             ),
             map(([action, consecutiveBombs, consecutiveSmileys, cells]) => {
-                if (action.valueType === CellType.Reset) {
-                    const surrounding = this.gameService.findSurroundingElauements(cells, action.position);
+                if (cells[action.x][action.y].type === CellType.Reset) {
+                    const surrounding = this.gameService.findSurroundingElements(cells, action);
                     return GameStoreActions.setSurrounding(surrounding);
                 }
 
@@ -52,42 +52,14 @@ export class GameEffects {
         () => this.actions$.pipe(
             ofType(GameStoreActions.turnPlayed),
             withLatestFrom(
-                this.store.select(GameStoreSelectors.numberOfPlays),
-                this.store.select(GameStoreSelectors.wins),
-                this.store.select(GameStoreSelectors.losses)
+                this.store.select(GameStoreSelectors.numberOfPlays)
             ),
-            map(([action, numberOfPlays, wins, losses]) => {
+            map(([action, numberOfPlays]) => {
                 if (numberOfPlays === 36) {
-                    return GameStoreActions.finishGame({ wins, losses });
+                    return GameStoreActions.finishGame();
                 }
 
                 return GameStoreActions.noopAction();
-            })
-        )
-    );
-
-    addLos$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(GameStoreActions.addLoss),
-            withLatestFrom(
-                this.store.select(GameStoreSelectors.wins),
-                this.store.select(GameStoreSelectors.losses)
-            ),
-            map(([action, wins, losses]) => {
-                return GameStoreActions.finishGame({ wins, losses });
-            })
-        )
-    );
-
-    addWin$ = createEffect(
-        () => this.actions$.pipe(
-            ofType(GameStoreActions.addWin),
-            withLatestFrom(
-                this.store.select(GameStoreSelectors.wins),
-                this.store.select(GameStoreSelectors.losses)
-            ),
-            map(([action, wins, losses]) => {
-                return GameStoreActions.finishGame({ wins, losses });
             })
         )
     );

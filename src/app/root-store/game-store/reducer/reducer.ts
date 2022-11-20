@@ -10,11 +10,10 @@ import {
     noopAction,
     addLoss,
     addWin,
-    setWinsAndLosses,
     setSurrounding,
     setBoard
- } from "./actions";
-import { initialGameState } from "./state";
+ } from "../actions";
+import { initialGameState } from "../state";
 
 export const gameFeatureKey = 'game';
 
@@ -41,9 +40,11 @@ export const gameFeatureReducer = createReducer(
     }),
 
     on(selectCell, (state, action) => {
+        let selectedCellType;
         const board = state.board.map((row, rowIndex) => {
             return row.map((cell, cellIndex) => {
-                if (rowIndex === action.position.x && cellIndex === action.position.y) {
+                if (rowIndex === action.x && cellIndex === action.y) {
+                    selectedCellType = cell.type;
                     return {
                         type: cell.type,
                         hidden: false
@@ -54,36 +55,40 @@ export const gameFeatureReducer = createReducer(
             })
         });
 
-        switch(cellType[action.valueType]) {
-            case CellType.Bomb:
-                return {
-                    ...state,
-                    consecutiveBombs: state.consecutiveBombs + 1,
-                    consecutiveSmileys: 0,
-                    numberOfPlays: state.numberOfPlays + 1,
-                    board,
-                    bombsAround: 0,
-                    smileysAround: 0
-                }
-            case CellType.Smiley:
-                return {
-                    ...state,
-                    consecutiveBombs: 0,
-                    consecutiveSmileys: state.consecutiveSmileys + 1,
-                    numberOfPlays: state.numberOfPlays + 1,
-                    board,
-                    bombsAround: 0,
-                    smileysAround: 0
-                }
-            case CellType.Reset:
-                return {
-                    ...state,
-                    consecutiveBombs: 0,
-                    consecutiveSmileys: 0,
-                    numberOfPlays: state.numberOfPlays + 1,
-                    board
-                }
+        if (selectedCellType) {
+            switch(selectedCellType) {
+                case CellType.Bomb:
+                    return {
+                        ...state,
+                        consecutiveBombs: state.consecutiveBombs + 1,
+                        consecutiveSmileys: 0,
+                        numberOfPlays: state.numberOfPlays + 1,
+                        board,
+                        bombsAround: 0,
+                        smileysAround: 0
+                    }
+                case CellType.Smiley:
+                    return {
+                        ...state,
+                        consecutiveBombs: 0,
+                        consecutiveSmileys: state.consecutiveSmileys + 1,
+                        numberOfPlays: state.numberOfPlays + 1,
+                        board,
+                        bombsAround: 0,
+                        smileysAround: 0
+                    }
+                case CellType.Reset:
+                    return {
+                        ...state,
+                        consecutiveBombs: 0,
+                        consecutiveSmileys: 0,
+                        numberOfPlays: state.numberOfPlays + 1,
+                        board
+                    }
+            }
         }
+
+        return {...state};
     }),
 
     on(noopAction, (state, action) => {
@@ -97,7 +102,9 @@ export const gameFeatureReducer = createReducer(
             ...state,
             consecutiveBombs: 0,
             losses: state.losses + 1,
-            result: Result.lost
+            result: Result.lost,
+            inProgress: false,
+            isFinished: true
         }
     }),
 
@@ -106,15 +113,9 @@ export const gameFeatureReducer = createReducer(
             ...state,
             consecutiveSmileys: 0,
             wins: state.wins + 1,
-            result: Result.won
-        }
-    }),
-
-    on(setWinsAndLosses, (state, action) => {
-        return {
-            ...state,
-            wins: action.wins,
-            losses: action.losses
+            result: Result.won,
+            inProgress: false,
+            isFinished: true
         }
     }),
 
