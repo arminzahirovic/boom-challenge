@@ -5,8 +5,8 @@ import { EffectsModule } from '@ngrx/effects'
 
 import { gameFeatureKey, gameFeatureReducer } from './reducer/reducer';
 import { GameEffects } from './effects';
-import { localStorageMetaReducer } from './local-storage.metareducer';
-import { sessionStorageMetaReducer } from './session-storage.metareducer';
+import { localStorageMetaReducer } from './meta-reducers/local-storage.metareducer';
+import { sessionStorageMetaReducer } from './meta-reducers/session-storage.metareducer';
 
 @NgModule({
   declarations: [],
