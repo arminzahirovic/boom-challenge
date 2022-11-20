@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { Cell } from '../domain/Cell.model';
 import { CellType } from '../domain/CellType.enum';
 import { Position } from '../domain/Position.model';
-import { GameStoreActions, GameStoreSelectors, RootStoreState } from '../../root-store';
+import { GameStoreActions, RootStoreState,  } from '../../root-store';
 
 @Component({
   selector: 'app-cell',
@@ -16,11 +15,8 @@ export class CellComponent implements OnInit {
   @Input() cell: Cell | undefined;
   @Input() positionX!: number;
   @Input() positionY!: number;
+  @Input() gameFinished: boolean = false;
 
-  isFinished$: Observable<boolean> | undefined;
-
-  loaded = false;
-  gameFinished = false;
   emoji = '';
 
   constructor(
@@ -29,12 +25,8 @@ export class CellComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.cell) {
-      this.loaded = true;
       this.setEmoji(this.cell.type);
     }
-
-    this.isFinished$ = this.store.pipe(select(GameStoreSelectors.isFinished));
-    this.isFinished$.subscribe((value) => this.gameFinished = value)
   }
 
   cellClicked(): void {

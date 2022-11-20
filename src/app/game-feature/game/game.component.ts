@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Result } from '../domain/Result.enum';
-import { GameStoreActions, GameStoreSelectors, RootStoreState } from '../../root-store';
+import { GameStoreActions, GameStoreSelectors, GameStoreState, RootStoreState } from '../../root-store';
 
 @Component({
   selector: 'app-game',
@@ -20,7 +20,7 @@ export class GameComponent implements OnInit {
   title = 'Boom Challenge';
 
   constructor(
-    private store: Store<RootStoreState.RootState>
+    private store: Store<GameStoreState.GameState>
   ) { }
 
   ngOnInit(): void {

@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Result } from '../domain/Result.enum';
-import { GameStoreSelectors, RootStoreState } from '../../root-store';
+import { GameStoreSelectors, GameStoreState, RootStoreState } from '../../root-store';
 
 @Component({
   selector: 'app-game-information',
@@ -22,7 +22,7 @@ export class GameInformationComponent implements OnInit {
   resultEnum = Result;
 
   constructor(
-    private store: Store<RootStoreState.RootState>
+    private store: Store<GameStoreState.GameState>
   ) { }
 
   ngOnInit(): void {

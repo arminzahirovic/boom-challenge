@@ -1,4 +1,7 @@
 <div class="cell"
      (click)="cellClicked()">
-    <span *ngIf="!cell?.hidden || gameFinished">{{ emoji }}</span>
+    <span *ngIf="!cell?.hidden || gameFinished"
+          class="emoji">
+          {{ emoji }}
+    </span>
 </div>
