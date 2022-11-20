@@ -6,7 +6,7 @@ import { map, withLatestFrom } from "rxjs/operators";
 import { CellType } from "src/app/game-feature/domain/CellType.enum";
 import { GameService } from "src/app/game-feature/services/games.service";
 
-import { GameStoreActions, GameStoreSelectors } from ".";
+import { GameStoreActions, GameStoreSelectors } from "..";
 
 @Injectable()
 export class GameEffects {

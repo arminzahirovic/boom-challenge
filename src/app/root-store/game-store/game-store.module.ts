@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects'
 
 import { gameFeatureKey, gameFeatureReducer } from './reducer/reducer';
-import { GameEffects } from './effects';
+import { GameEffects } from './effects/effects';
 import { localStorageMetaReducer } from './meta-reducers/local-storage.metareducer';
 import { sessionStorageMetaReducer } from './meta-reducers/session-storage.metareducer';
 

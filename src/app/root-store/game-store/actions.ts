@@ -5,7 +5,7 @@ import { Position } from "src/app/game-feature/domain/Position.model"
 import { SelectCell } from "src/app/game-feature/domain/SelectCell.model"
 import { Surrounding } from "src/app/game-feature/domain/Surrounding.model"
 
-enum ActionTypes {
+export enum ActionTypes {
     START_NEW_GAME = "[New Game] Set in progress to true",
     FINISH_GAME = "[Finish Game] Set in progress to false",
     GAME_WON = "[Game won] Add one win",
