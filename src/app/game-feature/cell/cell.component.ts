@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Cell } from '../domain/Cell.model';
 import { CellType } from '../domain/CellType.enum';
 import { Position } from '../domain/Position.model';
-import { GameStoreActions, GameStoreSelectors, RootStoreState } from '../root-store';
+import { GameStoreActions, GameStoreSelectors, RootStoreState } from '../../root-store';
 
 @Component({
   selector: 'app-cell',

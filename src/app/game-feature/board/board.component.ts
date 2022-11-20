@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Cell } from '../domain/Cell.model';
-import { GameStoreSelectors, RootStoreState } from '../root-store';
+import { GameStoreSelectors, RootStoreState } from '../../root-store';
 
 @Component({
   selector: 'app-board',

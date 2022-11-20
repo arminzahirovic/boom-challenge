@@ -1,8 +1,8 @@
 import { createReducer, on } from "@ngrx/store";
 
-import { Cell } from "src/app/domain/Cell.model";
-import { CellType } from "src/app/domain/CellType.enum";
-import { Result } from "src/app/domain/Result.enum";
+import { Cell } from "src/app/game-feature/domain/Cell.model";
+import { CellType } from "src/app/game-feature/domain/CellType.enum";
+import { Result } from "src/app/game-feature/domain/Result.enum";
 import {
     startGame,
     finishGame,

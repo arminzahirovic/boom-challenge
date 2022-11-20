@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Result } from '../domain/Result.enum';
-import { GameStoreSelectors, RootStoreState } from '../root-store';
+import { GameStoreSelectors, RootStoreState } from '../../root-store';
 
 @Component({
   selector: 'app-game-information',

@@ -1,5 +1,5 @@
-import { Cell } from "src/app/domain/Cell.model";
-import { Result } from "src/app/domain/Result.enum";
+import { Cell } from "src/app/game-feature/domain/Cell.model";
+import { Result } from "src/app/game-feature/domain/Result.enum";
 
 export interface GameState {
     wins: number;
