@@ -60,11 +60,11 @@ describe('GameInformationComponent', () => {
   it('should display surrounding', () => {
     store.overrideSelector(
       GameStoreSelectors.bombsAround,
-      2,
+      2
     );
     store.overrideSelector(
       GameStoreSelectors.smileysAround,
-      3,
+      3
     );
     fixture.detectChanges();
     const surrounding = el.query(By.css(".surrounding-information"));
@@ -75,7 +75,7 @@ describe('GameInformationComponent', () => {
   it('should display game progress', () => {
     store.overrideSelector(
       GameStoreSelectors.consecutiveBombs,
-      1,
+      1
     );
     fixture.detectChanges();
     const progress = el.query(By.css(".game-progress div:first-child"));

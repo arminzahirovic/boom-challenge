@@ -7,7 +7,11 @@
                 <span>Wins: {{ wins$ | async }} Losses: {{ losses$ | async }}</span>
             </div>
         </div>
-        <app-game-information *ngIf="(isInProgress$ | async) || (isFinished$ | async)"></app-game-information>
+        <app-game-information *ngIf="(isInProgress$ | async) || (isFinished$ | async)"
+                              class="game-information">
+        </app-game-information>
     </div>
-    <app-board *ngIf="(isInProgress$ | async) || (isFinished$ | async)"></app-board>
+    <app-board *ngIf="(isInProgress$ | async) || (isFinished$ | async)"
+               class="board">
+    </app-board>
 </section>

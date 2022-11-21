@@ -1,10 +1,11 @@
 import { GameStoreSelectors } from "src/app/root-store";
+import { initialGameState } from "src/app/root-store/game-store/state";
 import { boardMock } from "./board";
 
   export const selectorsMock = [
     { 
       selector: GameStoreSelectors.cells,
-      value: boardMock 
+      value: initialGameState 
     },
     {
       selector: GameStoreSelectors.numberOfPlays,
@@ -32,7 +33,7 @@ import { boardMock } from "./board";
     },
     {
       selector: GameStoreSelectors.isInProgress,
-      value: true,
+      value: false,
     },
     {
       selector: GameStoreSelectors.losses,

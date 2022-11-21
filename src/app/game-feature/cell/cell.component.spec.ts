@@ -38,18 +38,18 @@ describe('CellComponent', () => {
   it('should display cell with emoji hidden', () => {
     component.setEmoji = jest.fn();
     fixture.detectChanges();
-    const cell = el.queryAll(By.css(".cell"));
-    const emoji = el.queryAll(By.css(".emoji"));
+    const cell = el.query(By.css(".cell"));
+    const emoji = el.query(By.css(".emoji"));
     expect(cell).toBeTruthy();
-    expect(emoji.length).toBe(0);
+    expect(emoji).toBeNull();
     expect(component.setEmoji).toBeCalled();
   });
 
   it('should display cell with emoji on game finished', () => {
     component.gameFinished = true;
     fixture.detectChanges();
-    const cell = el.queryAll(By.css(".cell"));
-    const emoji = el.queryAll(By.css(".emoji"));
+    const cell = el.query(By.css(".cell"));
+    const emoji = el.query(By.css(".emoji"));
     expect(cell).toBeTruthy();
     expect(emoji).toBeTruthy();
   });
@@ -57,8 +57,8 @@ describe('CellComponent', () => {
   it('should display cell with emoji', () => {
     component.cell = { type: CellType.Bomb, hidden: false };
     fixture.detectChanges();
-    const cell = el.queryAll(By.css(".cell"));
-    const emoji = el.queryAll(By.css(".emoji"));
+    const cell = el.query(By.css(".cell"));
+    const emoji = el.query(By.css(".emoji"));
     expect(cell).toBeTruthy();
     expect(emoji).toBeTruthy();
   });
