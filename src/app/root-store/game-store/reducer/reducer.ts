@@ -57,30 +57,30 @@ export const gameFeatureReducer = createReducer(
 
         if (selectedCellType) {
             switch(selectedCellType) {
-                case CellType.Bomb:
+                case CellType.Boom:
                     return {
                         ...state,
-                        consecutiveBombs: state.consecutiveBombs + 1,
+                        consecutiveBooms: state.consecutiveBooms + 1,
                         consecutiveSmileys: 0,
                         numberOfPlays: state.numberOfPlays + 1,
                         board,
-                        bombsAround: 0,
+                        boomsAround: 0,
                         smileysAround: 0
                     }
                 case CellType.Smiley:
                     return {
                         ...state,
-                        consecutiveBombs: 0,
+                        consecutiveBooms: 0,
                         consecutiveSmileys: state.consecutiveSmileys + 1,
                         numberOfPlays: state.numberOfPlays + 1,
                         board,
-                        bombsAround: 0,
+                        boomsAround: 0,
                         smileysAround: 0
                     }
                 case CellType.Reset:
                     return {
                         ...state,
-                        consecutiveBombs: 0,
+                        consecutiveBooms: 0,
                         consecutiveSmileys: 0,
                         numberOfPlays: state.numberOfPlays + 1,
                         board
@@ -100,7 +100,7 @@ export const gameFeatureReducer = createReducer(
     on(addLoss, (state, action) => {
         return {
             ...state,
-            consecutiveBombs: 0,
+            consecutiveBooms: 0,
             losses: state.losses + 1,
             result: Result.lost,
             inProgress: false,
@@ -122,7 +122,7 @@ export const gameFeatureReducer = createReducer(
     on(setSurrounding, (state, action) => {
         return {
             ...state,
-            bombsAround: action.bombs,
+            boomsAround: action.booms,
             smileysAround: action.smileys
         }
     }),

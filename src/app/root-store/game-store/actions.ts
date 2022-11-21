@@ -13,7 +13,7 @@ export enum ActionTypes {
     TURN_PLAYED = "[Turn played] Turn played",
     NOOP_ACTION = "[Turn played effect] Noop action",
     SET_WINS_AND_LOSSES = "[Game Component] Set wins and losses",
-    SET_SURROUNDING = "[Select cell effect] Set number of bombms and smileys in surroundings",
+    SET_SURROUNDING = "[Select cell effect] Set number of booms and smileys in surroundings",
     SET_BOARD = "[New game effect] Initialize board cells"
 }
 

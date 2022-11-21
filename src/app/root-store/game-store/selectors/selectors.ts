@@ -30,9 +30,9 @@ export const numberOfPlays = createSelector(
     state => state.numberOfPlays
 );
 
-export const consecutiveBombs = createSelector(
+export const consecutiveBooms = createSelector(
     selectGameState,
-    state => state.consecutiveBombs
+    state => state.consecutiveBooms
 );
 
 export const consecutiveSmileys = createSelector(
@@ -40,9 +40,9 @@ export const consecutiveSmileys = createSelector(
     state => state.consecutiveSmileys
 );
 
-export const bombsAround = createSelector(
+export const boomsAround = createSelector(
     selectGameState,
-    state => state.bombsAround
+    state => state.boomsAround
 );
 
 export const smileysAround = createSelector(

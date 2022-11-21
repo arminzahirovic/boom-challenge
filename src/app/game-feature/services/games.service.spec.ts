@@ -17,10 +17,10 @@ describe('GamesService', () => {
         gamesService = TestBed.inject(GameService);
     });
 
-    it('should initialize board with 12 smileys, 12 resets, 12 bombs all set to hidden', () => {
+    it('should initialize board with 12 smileys, 12 resets, 12 booms all set to hidden', () => {
         let numberOfSmileys = 0;
         let numberOfResets = 0;
-        let numberOfBombs = 0;
+        let numberOfBooms = 0;
         let hidden = true;
         const result = gamesService.initializeBoard();
 
@@ -30,8 +30,8 @@ describe('GamesService', () => {
                     hidden = cell.hidden;
                 }
                 switch(cell.type) {
-                    case CellType.Bomb:
-                        numberOfBombs++;
+                    case CellType.Boom:
+                        numberOfBooms++;
                         break;
                     case CellType.Reset:
                         numberOfResets++;
@@ -45,7 +45,7 @@ describe('GamesService', () => {
 
         expect(numberOfSmileys).toBe(12);
         expect(numberOfResets).toBe(12);
-        expect(numberOfBombs).toBe(12);
+        expect(numberOfBooms).toBe(12);
         expect(hidden).toBe(true);
     });
 
@@ -57,7 +57,7 @@ describe('GamesService', () => {
 
         const result = gamesService.findSurroundingElements(boardMock, selectedElement);
 
-        expect(result.bombs).toBe(2);
+        expect(result.booms).toBe(2);
         expect(result.smileys).toBe(1);
     });
 
@@ -69,7 +69,7 @@ describe('GamesService', () => {
 
         const result = gamesService.findSurroundingElements(boardMock, selectedElement);
 
-        expect(result.bombs).toBe(5);
+        expect(result.booms).toBe(5);
         expect(result.smileys).toBe(1);
     });
 
@@ -81,7 +81,7 @@ describe('GamesService', () => {
 
         const result = gamesService.findSurroundingElements(boardMock, selectedElement);
 
-        expect(result.bombs).toBe(0);
+        expect(result.booms).toBe(0);
         expect(result.smileys).toBe(2);
     });
 })

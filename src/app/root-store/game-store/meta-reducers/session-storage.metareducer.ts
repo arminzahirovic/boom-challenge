@@ -18,10 +18,10 @@ const stateKeys = [
     'board',
     'inProgress',
     'isFinished',
-    'bombsAround',
+    'boomsAround',
     'smileysAround',
     'consecutiveSmileys',
-    'consecutiveBombs',
+    'consecutiveBooms',
     'numberOfPlays',
     'result'
 

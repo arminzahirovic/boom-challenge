@@ -1,5 +1,5 @@
 export enum CellType {
     Smiley = "Smiley",
-    Bomb = "Bomb",
+    Boom = "Boom",
     Reset = "Reset"
 }

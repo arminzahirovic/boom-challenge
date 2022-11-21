@@ -40,20 +40,20 @@ it('should select numberOfPlays', () => {
     expect(result).toBe(0);
 });
 
-it('should select consecutiveBombs', () => {
-    const result = GameStoreSelectors.consecutiveBombs.projector({ ...initialGameState});
+it('should select consecutiveBooms', () => {
+    const result = GameStoreSelectors.consecutiveBooms.projector({ ...initialGameState});
 
     expect(result).toBe(0);
 });
 
 it('should select consecutiveSmileys', () => {
-    const result = GameStoreSelectors.consecutiveBombs.projector({ ...initialGameState});
+    const result = GameStoreSelectors.consecutiveBooms.projector({ ...initialGameState});
 
     expect(result).toBe(0);
 });
 
-it('should select bombsAround', () => {
-    const result = GameStoreSelectors.bombsAround.projector({ ...initialGameState});
+it('should select boomsAround', () => {
+    const result = GameStoreSelectors.boomsAround.projector({ ...initialGameState});
 
     expect(result).toBe(0);
 });

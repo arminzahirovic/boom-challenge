@@ -24,7 +24,7 @@ describe('CellComponent', () => {
 
     fixture = TestBed.createComponent(CellComponent);
     component = fixture.componentInstance;
-    component.cell = { type: CellType.Bomb, hidden: true };
+    component.cell = { type: CellType.Boom, hidden: true };
     component.positionX = 0;
     component.positionY = 0;
     component.gameFinished = false;
@@ -55,7 +55,7 @@ describe('CellComponent', () => {
   });
 
   it('should display cell with emoji', () => {
-    component.cell = { type: CellType.Bomb, hidden: false };
+    component.cell = { type: CellType.Boom, hidden: false };
     fixture.detectChanges();
     const cell = el.query(By.css(".cell"));
     const emoji = el.query(By.css(".emoji"));
@@ -65,7 +65,7 @@ describe('CellComponent', () => {
 
   it('should set emoji to boom', () => {
     fixture.detectChanges();
-    component.setEmoji(CellType.Bomb);
+    component.setEmoji(CellType.Boom);
     expect(component.emoji).toEqual('💥');
   });
 

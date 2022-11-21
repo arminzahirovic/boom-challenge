@@ -109,14 +109,14 @@ describe('Game effects', () => {
             y: 3
         };
         const surrounding: Surrounding = {
-            bombs: 2,
+            booms: 2,
             smileys: 2
         }
         gameService = TestBed.inject(GameService);
         effects = TestBed.inject(GameEffects);
         store = TestBed.inject(MockStore);
         store.overrideSelector(
-          GameStoreSelectors.consecutiveBombs,
+          GameStoreSelectors.consecutiveBooms,
           0
         );
         store.overrideSelector(
@@ -135,10 +135,10 @@ describe('Game effects', () => {
         });
 
         obsSpy = subscribeSpyTo(effects.cellClicked$);
-        expect(obsSpy.getFirstValue()).toEqual({ bombs: surrounding.bombs, smileys: surrounding.smileys, type: ActionTypes.SET_SURROUNDING });
+        expect(obsSpy.getFirstValue()).toEqual({ booms: surrounding.booms, smileys: surrounding.smileys, type: ActionTypes.SET_SURROUNDING });
     });
 
-    it('cellClicked$ dispatches addLoss if clicked on second consecutive bomb', () => {
+    it('cellClicked$ dispatches addLoss if clicked on second consecutive boom', () => {
         const position: Position = {
             x: 0,
             y: 0
@@ -146,7 +146,7 @@ describe('Game effects', () => {
         effects = TestBed.inject(GameEffects);
         store = TestBed.inject(MockStore);
         store.overrideSelector(
-          GameStoreSelectors.consecutiveBombs,
+          GameStoreSelectors.consecutiveBooms,
           2
         );
         store.overrideSelector(
@@ -172,7 +172,7 @@ describe('Game effects', () => {
         effects = TestBed.inject(GameEffects);
         store = TestBed.inject(MockStore);
         store.overrideSelector(
-          GameStoreSelectors.consecutiveBombs,
+          GameStoreSelectors.consecutiveBooms,
           0
         );
         store.overrideSelector(
@@ -198,7 +198,7 @@ describe('Game effects', () => {
         effects = TestBed.inject(GameEffects);
         store = TestBed.inject(MockStore);
         store.overrideSelector(
-          GameStoreSelectors.consecutiveBombs,
+          GameStoreSelectors.consecutiveBooms,
           0
         );
         store.overrideSelector(

@@ -1,9 +1,9 @@
 export class Surrounding {
-    bombs: number;
+    booms: number;
     smileys: number;
 
     constructor() {
-        this.bombs = 0;
+        this.booms = 0;
         this.smileys = 0;
     }
 }

@@ -12,7 +12,7 @@ import { boardMock } from "./board";
       value: 0,
     },
     {
-      selector: GameStoreSelectors.consecutiveBombs,
+      selector: GameStoreSelectors.consecutiveBooms,
       value: 0,
     },
     {
@@ -20,7 +20,7 @@ import { boardMock } from "./board";
       value: 0,
     },
     {
-      selector: GameStoreSelectors.bombsAround,
+      selector: GameStoreSelectors.boomsAround,
       value: 0,
     },
     {

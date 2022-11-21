@@ -4,15 +4,15 @@ import { CellType } from "src/app/game-feature/domain/CellType.enum";
 export const boardMock: Cell[][] = [
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -20,7 +20,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -30,7 +30,7 @@ export const boardMock: Cell[][] = [
     ],
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -50,7 +50,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       }
     ],
@@ -64,11 +64,11 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -76,17 +76,17 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       }
     ],
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -94,7 +94,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -163,15 +163,15 @@ export const boardMock: Cell[][] = [
   export const boardMockSmileySelected: Cell[][] = [
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -179,7 +179,7 @@ export const boardMock: Cell[][] = [
         hidden: false
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -189,7 +189,7 @@ export const boardMock: Cell[][] = [
     ],
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -209,7 +209,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       }
     ],
@@ -223,11 +223,11 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -235,17 +235,17 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       }
     ],
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -253,7 +253,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -319,18 +319,18 @@ export const boardMock: Cell[][] = [
     ]
   ];
 
-  export const boardMockBombSelected: Cell[][] = [
+  export const boardMockBoomSelected: Cell[][] = [
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: false
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -338,7 +338,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -348,7 +348,7 @@ export const boardMock: Cell[][] = [
     ],
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -368,7 +368,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       }
     ],
@@ -382,11 +382,11 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -394,17 +394,17 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       }
     ],
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -412,7 +412,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -481,15 +481,15 @@ export const boardMock: Cell[][] = [
   export const boardMockResetSelected: Cell[][] = [
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -497,7 +497,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -507,7 +507,7 @@ export const boardMock: Cell[][] = [
     ],
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -527,7 +527,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       }
     ],
@@ -541,11 +541,11 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -553,17 +553,17 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       }
     ],
     [
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {
@@ -571,7 +571,7 @@ export const boardMock: Cell[][] = [
         hidden: true
       },
       {
-        type: CellType.Bomb,
+        type: CellType.Boom,
         hidden: true
       },
       {

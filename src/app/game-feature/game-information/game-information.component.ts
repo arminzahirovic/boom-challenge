@@ -12,10 +12,10 @@ import { GameStoreSelectors, GameStoreState } from '../../root-store';
 })
 export class GameInformationComponent implements OnInit {
 
-  bombsAround$: Observable<number> | undefined;
+  boomsAround$: Observable<number> | undefined;
   smileysAround$: Observable<number> | undefined;
   consecutiveSmileys$: Observable<number> | undefined;
-  consecutiveBombs$: Observable<number> | undefined;
+  consecutiveBooms$: Observable<number> | undefined;
   result$: Observable<Result | undefined> | undefined;
   result: Result | undefined;
 
@@ -26,9 +26,9 @@ export class GameInformationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.bombsAround$ = this.store.pipe(select(GameStoreSelectors.bombsAround));
+    this.boomsAround$ = this.store.pipe(select(GameStoreSelectors.boomsAround));
     this.smileysAround$ = this.store.pipe(select(GameStoreSelectors.smileysAround));
-    this.consecutiveBombs$ = this.store.pipe(select(GameStoreSelectors.consecutiveBombs));
+    this.consecutiveBooms$ = this.store.pipe(select(GameStoreSelectors.consecutiveBooms));
     this.consecutiveSmileys$ = this.store.pipe(select(GameStoreSelectors.consecutiveSmileys));
     this.result$ = this.store.pipe(select(GameStoreSelectors.result));
 

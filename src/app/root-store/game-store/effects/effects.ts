@@ -24,17 +24,17 @@ export class GameEffects {
         () => this.actions$.pipe(
             ofType(GameStoreActions.selectCell),
             withLatestFrom(
-                this.store.select(GameStoreSelectors.consecutiveBombs),
+                this.store.select(GameStoreSelectors.consecutiveBooms),
                 this.store.select(GameStoreSelectors.consecutiveSmileys), 
                 this.store.select(GameStoreSelectors.cells)
             ),
-            map(([action, consecutiveBombs, consecutiveSmileys, cells]) => {
+            map(([action, consecutiveBooms, consecutiveSmileys, cells]) => {
                 if (cells[action.x][action.y].type === CellType.Reset) {
                     const surrounding = this.gameService.findSurroundingElements(cells, action);
                     return GameStoreActions.setSurrounding(surrounding);
                 }
 
-                if (consecutiveBombs === 2) {
+                if (consecutiveBooms === 2) {
                     return GameStoreActions.addLoss();
                 }
 

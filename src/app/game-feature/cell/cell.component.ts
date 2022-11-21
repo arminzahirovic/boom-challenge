@@ -44,7 +44,7 @@ export class CellComponent implements OnInit {
 
   setEmoji(type: CellType): void {
     switch(type) {
-      case CellType.Bomb:
+      case CellType.Boom:
         this.emoji = '💥';
         break;
       case CellType.Smiley:

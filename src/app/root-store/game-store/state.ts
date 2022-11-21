@@ -6,10 +6,10 @@ export interface GameState {
     losses: number;
     inProgress: boolean;
     isFinished: boolean;
-    bombsAround: number;
+    boomsAround: number;
     smileysAround: number;
     consecutiveSmileys: number;
-    consecutiveBombs: number;
+    consecutiveBooms: number;
     numberOfPlays: number;
     board: Cell[][];
     result: Result | undefined;
@@ -20,10 +20,10 @@ export const initialGameState: GameState = {
     losses: 0,
     inProgress: false,
     isFinished: false,
-    bombsAround: 0,
+    boomsAround: 0,
     smileysAround: 0,
     consecutiveSmileys: 0,
-    consecutiveBombs: 0,
+    consecutiveBooms: 0,
     numberOfPlays: 0,
     board: [],
     result: undefined

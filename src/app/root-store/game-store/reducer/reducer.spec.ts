@@ -2,7 +2,7 @@
 import { expect } from '@jest/globals';
 import {
     boardMock,
-    boardMockBombSelected,
+    boardMockBoomSelected,
     boardMockResetSelected,
     boardMockSmileySelected
 } from 'src/test-data/board';
@@ -54,14 +54,14 @@ describe('Game reducer', () => {
         expect(result).toEqual(expectedState);
     });
 
-    it('should set surrounding bombs to 2 and smileys to 3', () => {
+    it('should set surrounding booms to 2 and smileys to 3', () => {
         const expectedState: GameStoreState.GameState = {
             ...initialGameState,
-            bombsAround: 2,
+            boomsAround: 2,
             smileysAround: 3
         };
         const surrounding: Surrounding = {
-            bombs: 2,
+            booms: 2,
             smileys: 3
         };
 
@@ -125,16 +125,16 @@ describe('Game reducer', () => {
         expect(result).toEqual(expectedState);
     });
 
-    it('should set selected bomb cell to be visible and increase consecutive clicks number', () => {
+    it('should set selected boom cell to be visible and increase consecutive clicks number', () => {
         const initialState = {
             ...initialGameState,
             board: boardMock
         }
         const expectedState = {
             ...initialGameState,
-            consecutiveBombs: 1,
+            consecutiveBooms: 1,
             numberOfPlays: 1,
-            board: boardMockBombSelected
+            board: boardMockBoomSelected
         };
         const position: Position = {
             x: 0,

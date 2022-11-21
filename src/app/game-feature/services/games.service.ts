@@ -25,8 +25,8 @@ export class GameService {
             const x = selectedElement.x + position.x;
             const y = selectedElement.y + position.y;
             if (x > -1 && x < board.length && y > -1 && y < board[selectedElement.x].length) {
-                if (board[x][y].type === CellType.Bomb) {
-                    surrounding.bombs++;
+                if (board[x][y].type === CellType.Boom) {
+                    surrounding.booms++;
                     return;
                 }
 
@@ -44,11 +44,11 @@ export class GameService {
         const columns = 6;
         const board: Cell[][] = [];
         let types = [
-            CellType.Bomb,
+            CellType.Boom,
             CellType.Smiley,
             CellType.Reset
         ];
-        let numberOfBombs = 0;
+        let numberOfBooms = 0;
         let numberOfSmileys = 0;
         let numberOfReset = 0;
 
@@ -65,9 +65,9 @@ export class GameService {
 
                 let removeType = false;
                 switch(types[randomIndex]) {
-                    case CellType.Bomb:
-                        numberOfBombs++;
-                        if (numberOfBombs === 12) {
+                    case CellType.Boom:
+                        numberOfBooms++;
+                        if (numberOfBooms === 12) {
                             removeType = true;
                         }
                         break;

@@ -3,13 +3,13 @@
           class="result">
           You {{ resultEnum[result] }} the game
     </span>
-    <span *ngIf="(bombsAround$ | async) || (smileysAround$ | async)"
+    <span *ngIf="(boomsAround$ | async) || (smileysAround$ | async)"
           class="surrounding-information">
-        There are {{ bombsAround$ | async }} bombs and {{ smileysAround$ | async }} smileys around selected cell
+        There are {{ boomsAround$ | async }} booms and {{ smileysAround$ | async }} smileys around selected cell
     </span>
     <div *ngIf="!result"
          class="game-progress">
-        <div>Number of consecutive bombs {{ consecutiveBombs$ | async }}</div>
+        <div>Number of consecutive booms {{ consecutiveBooms$ | async }}</div>
         <div>Number of consecutive smileys {{ consecutiveSmileys$ | async }}</div>
     </div>
 </div>

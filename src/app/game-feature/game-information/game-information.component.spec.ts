@@ -58,7 +58,7 @@ describe('GameInformationComponent', () => {
 
   it('should display surrounding', () => {
     store.overrideSelector(
-      GameStoreSelectors.bombsAround,
+      GameStoreSelectors.boomsAround,
       2
     );
     store.overrideSelector(
@@ -68,17 +68,17 @@ describe('GameInformationComponent', () => {
     fixture.detectChanges();
     const surrounding = el.query(By.css(".surrounding-information"));
     nativeElement = surrounding.nativeElement;
-    expect(nativeElement.textContent).toEqual(' There are 2 bombs and 3 smileys around selected cell ')
+    expect(nativeElement.textContent).toEqual(' There are 2 booms and 3 smileys around selected cell ')
   });
 
   it('should display game progress', () => {
     store.overrideSelector(
-      GameStoreSelectors.consecutiveBombs,
+      GameStoreSelectors.consecutiveBooms,
       1
     );
     fixture.detectChanges();
     const progress = el.query(By.css(".game-progress div:first-child"));
     nativeElement = progress.nativeElement;
-    expect(nativeElement.textContent).toEqual('Number of consecutive bombs 1')
+    expect(nativeElement.textContent).toEqual('Number of consecutive booms 1')
   });
 });
