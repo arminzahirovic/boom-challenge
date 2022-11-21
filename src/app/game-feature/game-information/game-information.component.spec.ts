@@ -9,7 +9,6 @@ import { initialGameState } from 'src/app/root-store/game-store/state';
 import { selectorsMock } from 'src/test-data/selectors';
 import { Result } from '../domain/Result.enum';
 import { GameModule } from '../game.module';
-
 import { GameInformationComponent } from './game-information.component';
 
 describe('GameInformationComponent', () => {

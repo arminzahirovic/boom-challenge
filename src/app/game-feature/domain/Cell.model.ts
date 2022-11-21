@@ -1,4 +1,4 @@
-import { CellType } from "./CellType.enum";
+import { CellType } from './CellType.enum';
 
 export interface Cell {
     type: CellType,

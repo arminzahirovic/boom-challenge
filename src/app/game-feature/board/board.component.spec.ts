@@ -9,7 +9,6 @@ import { initialGameState } from 'src/app/root-store/game-store/state';
 import { boardMock } from 'src/test-data/board';
 import { selectorsMock } from 'src/test-data/selectors';
 import { GameModule } from '../game.module';
-
 import { BoardComponent } from './board.component';
 
 describe('BoardComponent', () => {

@@ -1,8 +1,8 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on } from '@ngrx/store';
 
-import { Cell } from "src/app/game-feature/domain/Cell.model";
-import { CellType } from "src/app/game-feature/domain/CellType.enum";
-import { Result } from "src/app/game-feature/domain/Result.enum";
+import { Cell } from 'src/app/game-feature/domain/Cell.model';
+import { CellType } from 'src/app/game-feature/domain/CellType.enum';
+import { Result } from 'src/app/game-feature/domain/Result.enum';
 import {
     startGame,
     finishGame,
@@ -12,8 +12,8 @@ import {
     addWin,
     setSurrounding,
     setBoard
- } from "../actions";
-import { initialGameState } from "../state";
+ } from '../actions';
+import { initialGameState } from '../state';
 
 export const gameFeatureKey = 'game';
 

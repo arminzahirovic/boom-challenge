@@ -1,5 +1,5 @@
-import { CellType } from "./CellType.enum";
-import { Position } from "./Position.model";
+import { CellType } from './CellType.enum';
+import { Position } from './Position.model';
 
 export interface SelectCell {
     valueType: CellType;

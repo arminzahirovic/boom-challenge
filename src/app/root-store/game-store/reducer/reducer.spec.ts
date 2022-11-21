@@ -1,13 +1,18 @@
 
 import { expect } from '@jest/globals';
+import {
+    boardMock,
+    boardMockBombSelected,
+    boardMockResetSelected,
+    boardMockSmileySelected
+} from 'src/test-data/board';
+
+import { GameStoreActions, GameStoreState } from '..';
+import { initialGameState } from '../state';
+import { gameFeatureReducer } from './reducer';
 import { Position } from 'src/app/game-feature/domain/Position.model';
 import { Result } from 'src/app/game-feature/domain/Result.enum';
 import { Surrounding } from 'src/app/game-feature/domain/Surrounding.model';
-import { boardMock, boardMockBombSelected, boardMockResetSelected, boardMockSmileySelected } from 'src/test-data/board';
-
-import { GameStoreActions, GameStoreState } from "..";
-import { initialGameState } from "../state";
-import { gameFeatureReducer } from "./reducer";
 
 describe('Game reducer', () => {
     it('should set inProgress to true', () => {

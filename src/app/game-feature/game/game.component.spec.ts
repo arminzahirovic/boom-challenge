@@ -1,10 +1,9 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { expect } from '@jest/globals';
+import { expect, jest } from '@jest/globals';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { GameStoreSelectors, RootStoreModule } from 'src/app/root-store';
+import { GameStoreActions, GameStoreSelectors, RootStoreModule } from 'src/app/root-store';
 import { initialGameState } from 'src/app/root-store/game-store/state';
 import { selectorsMock } from 'src/test-data/selectors';
 import { GameModule } from '../game.module';
@@ -67,5 +66,13 @@ describe('GameComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('span')?.textContent).toContain('Wins: 2 Losses: 10');
+  });
+
+  it('should dispatch startGame action', () => {
+    const store = TestBed.inject(MockStore);
+    store.dispatch = jest.fn();
+    fixture.detectChanges();
+    component.startNewGame();
+    expect(store.dispatch).toBeCalledWith(GameStoreActions.startGame());
   });
 });

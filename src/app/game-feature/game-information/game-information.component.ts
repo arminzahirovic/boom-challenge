@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Result } from '../domain/Result.enum';
-import { GameStoreSelectors, GameStoreState, RootStoreState } from '../../root-store';
+import { GameStoreSelectors, GameStoreState } from '../../root-store';
 
 @Component({
   selector: 'app-game-information',
@@ -34,5 +34,4 @@ export class GameInformationComponent implements OnInit {
 
     this.result$.subscribe((value) => this.result = value);
   }
-
 }

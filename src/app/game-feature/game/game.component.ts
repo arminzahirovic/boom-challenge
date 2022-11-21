@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Result } from '../domain/Result.enum';
-import { GameStoreActions, GameStoreSelectors, GameStoreState, RootStoreState } from '../../root-store';
+import {
+  GameStoreActions,
+  GameStoreSelectors,
+  GameStoreState
+} from '../../root-store';
 
 @Component({
   selector: 'app-game',

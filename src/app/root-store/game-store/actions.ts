@@ -1,9 +1,8 @@
-import { createAction, props } from "@ngrx/store"
-import { Cell } from "src/app/game-feature/domain/Cell.model"
-import { Position } from "src/app/game-feature/domain/Position.model"
+import { createAction, props } from '@ngrx/store';
 
-import { SelectCell } from "src/app/game-feature/domain/SelectCell.model"
-import { Surrounding } from "src/app/game-feature/domain/Surrounding.model"
+import { Cell } from 'src/app/game-feature/domain/Cell.model';
+import { Position } from 'src/app/game-feature/domain/Position.model';
+import { Surrounding } from 'src/app/game-feature/domain/Surrounding.model';
 
 export enum ActionTypes {
     START_NEW_GAME = "[New Game] Set in progress to true",

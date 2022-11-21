@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { Cell } from "../domain/Cell.model";
-import { CellType } from "../domain/CellType.enum";
+import { Injectable } from '@angular/core';
 
-import { Position } from "../domain/Position.model";
-import { Surrounding } from "../domain/Surrounding.model";
+import { Cell } from '../domain/Cell.model';
+import { CellType } from '../domain/CellType.enum';
+import { Position } from '../domain/Position.model';
+import { Surrounding } from '../domain/Surrounding.model';
 
 const surroundingPositions: Position[] = [
     { x: -1, y: -1 },
@@ -14,7 +14,7 @@ const surroundingPositions: Position[] = [
     { x: +1, y: -1 },
     { x: +1, y: 0 },
     { x: +1, y: +1 }
-]
+];
 
 @Injectable()
 export class GameService {

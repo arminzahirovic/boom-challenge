@@ -2,8 +2,8 @@ import { expect } from '@jest/globals';
 import { TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Action, Store } from '@ngrx/store';
-import { provideMockStore } from '@ngrx/store/testing';
+import { Action } from '@ngrx/store';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { SubscriberSpy, subscribeSpyTo } from '@hirez_io/observer-spy';
 
 import { GameService } from 'src/app/game-feature/services/games.service';
@@ -13,6 +13,8 @@ import { boardMock } from 'src/test-data/board';
 import { ActionTypes } from '../actions';
 import { Surrounding } from 'src/app/game-feature/domain/Surrounding.model';
 import { Position } from 'src/app/game-feature/domain/Position.model';
+import { initialGameState } from '../state';
+import { selectorsMock } from 'src/test-data/selectors';
 
 describe('Game effects', () => {
 
@@ -20,29 +22,30 @@ describe('Game effects', () => {
     let effects: GameEffects;
     let gameService: GameService;
     let obsSpy: SubscriberSpy<Action>;
+    let store: MockStore;
+
+    beforeEach(async () => {
+      TestBed.configureTestingModule({
+          providers: [
+              GameEffects,
+              provideMockActions(() => actions$),
+              provideMockStore({
+                initialState: initialGameState,
+                selectors: selectorsMock
+              }),
+              GameService
+          ]
+      })
+    });
 
     it('startGame$ dispatches setBoard action', () => {
-        TestBed.configureTestingModule({
-            providers: [
-                GameEffects,
-                provideMockActions(() => actions$),
-                provideMockStore({
-                    selectors: [
-                      {
-                        selector: GameStoreSelectors.isInProgress,
-                        value: true,
-                      },
-                      {
-                        selector: GameStoreSelectors.numberOfPlays,
-                        value: 36,
-                      },
-                    ],
-                  }),
-                GameService
-            ]
-        });
         gameService = TestBed.inject(GameService);
         effects = TestBed.inject(GameEffects);
+        store = TestBed.inject(MockStore);
+        store.overrideSelector(
+          GameStoreSelectors.isInProgress,
+          true
+        );
 
         actions$ = of(GameStoreActions.startGame());
 
@@ -55,26 +58,16 @@ describe('Game effects', () => {
     });
 
     it('turnPlayed$ dispatches finishGame action if number of plays is 36', () => {
-        TestBed.configureTestingModule({
-            providers: [
-                GameEffects,
-                provideMockActions(() => actions$),
-                provideMockStore({
-                    selectors: [
-                      {
-                        selector: GameStoreSelectors.isInProgress,
-                        value: true,
-                      },
-                      {
-                        selector: GameStoreSelectors.numberOfPlays,
-                        value: 36,
-                      },
-                    ],
-                  }),
-                GameService
-            ]
-        });
         effects = TestBed.inject(GameEffects);
+        store = TestBed.inject(MockStore);
+        store.overrideSelector(
+          GameStoreSelectors.isInProgress,
+          true
+        );
+        store.overrideSelector(
+          GameStoreSelectors.numberOfPlays,
+          36
+        );
 
         actions$ = of(GameStoreActions.turnPlayed());
 
@@ -83,22 +76,13 @@ describe('Game effects', () => {
     });
 
     it('turnPlayed$ dispatches noopAction if number of plays is lower then 36', () => {
-        TestBed.configureTestingModule({
-            providers: [
-                GameEffects,
-                provideMockActions(() => actions$),
-                provideMockStore({
-                    selectors: [
-                      {
-                        selector: GameStoreSelectors.numberOfPlays,
-                        value: 0,
-                      },
-                    ],
-                  }),
-                GameService
-            ]
-        });
         effects = TestBed.inject(GameEffects);
+        store = TestBed.inject(MockStore);
+        store.overrideSelector(
+          GameStoreSelectors.numberOfPlays,
+          0
+        );
+
         actions$ = of(GameStoreActions.turnPlayed());
 
         obsSpy = subscribeSpyTo(effects.turnPlayed$);
@@ -106,22 +90,13 @@ describe('Game effects', () => {
     });
 
     it('setSurrounding$ dispatches turnPlayed', () => {
-        TestBed.configureTestingModule({
-            providers: [
-                GameEffects,
-                provideMockActions(() => actions$),
-                provideMockStore({
-                    selectors: [
-                      {
-                        selector: GameStoreSelectors.numberOfPlays,
-                        value: 0,
-                      },
-                    ],
-                  }),
-                GameService
-            ]
-        });
         effects = TestBed.inject(GameEffects);
+        store = TestBed.inject(MockStore);
+        store.overrideSelector(
+          GameStoreSelectors.numberOfPlays,
+          0
+        );
+
         actions$ = of(GameStoreActions.setSurrounding(new Surrounding()));
 
         obsSpy = subscribeSpyTo(effects.setSurrounding$);
@@ -129,30 +104,6 @@ describe('Game effects', () => {
     });
 
     it('cellClicked$ dispatches setSurrounding if clicked on reset cell', () => {
-        TestBed.configureTestingModule({
-            providers: [
-                GameEffects,
-                provideMockActions(() => actions$),
-                provideMockStore({
-                    selectors: [
-                      {
-                        selector: GameStoreSelectors.consecutiveBombs,
-                        value: 0,
-                      },
-                      {
-                        selector: GameStoreSelectors.consecutiveSmileys,
-                        value: 0,
-                      },
-                      {
-                        selector: GameStoreSelectors.cells,
-                        value: boardMock,
-                      }
-                    ],
-                  }),
-                GameService
-            ]
-        });
-
         const position: Position = {
             x: 1,
             y: 3
@@ -163,6 +114,20 @@ describe('Game effects', () => {
         }
         gameService = TestBed.inject(GameService);
         effects = TestBed.inject(GameEffects);
+        store = TestBed.inject(MockStore);
+        store.overrideSelector(
+          GameStoreSelectors.consecutiveBombs,
+          0
+        );
+        store.overrideSelector(
+          GameStoreSelectors.consecutiveSmileys,
+          0
+        );
+        store.overrideSelector(
+          GameStoreSelectors.cells,
+          boardMock
+        );
+
         actions$ = of(GameStoreActions.selectCell(position));
 
         gameService.findSurroundingElements = (() => {
@@ -174,35 +139,25 @@ describe('Game effects', () => {
     });
 
     it('cellClicked$ dispatches addLoss if clicked on second consecutive bomb', () => {
-        TestBed.configureTestingModule({
-            providers: [
-                GameEffects,
-                provideMockActions(() => actions$),
-                provideMockStore({
-                    selectors: [
-                      {
-                        selector: GameStoreSelectors.consecutiveBombs,
-                        value: 2,
-                      },
-                      {
-                        selector: GameStoreSelectors.consecutiveSmileys,
-                        value: 0,
-                      },
-                      {
-                        selector: GameStoreSelectors.cells,
-                        value: boardMock,
-                      }
-                    ],
-                  }),
-                GameService
-            ]
-        });
-
         const position: Position = {
             x: 0,
             y: 0
         };
         effects = TestBed.inject(GameEffects);
+        store = TestBed.inject(MockStore);
+        store.overrideSelector(
+          GameStoreSelectors.consecutiveBombs,
+          2
+        );
+        store.overrideSelector(
+          GameStoreSelectors.consecutiveSmileys,
+          0
+        );
+        store.overrideSelector(
+          GameStoreSelectors.cells,
+          boardMock
+        );
+
         actions$ = of(GameStoreActions.selectCell(position));
 
         obsSpy = subscribeSpyTo(effects.cellClicked$);
@@ -210,35 +165,25 @@ describe('Game effects', () => {
     });
 
     it('cellClicked$ dispatches addLoss if clicked on third consecutive smiley', () => {
-        TestBed.configureTestingModule({
-            providers: [
-                GameEffects,
-                provideMockActions(() => actions$),
-                provideMockStore({
-                    selectors: [
-                      {
-                        selector: GameStoreSelectors.consecutiveBombs,
-                        value: 0,
-                      },
-                      {
-                        selector: GameStoreSelectors.consecutiveSmileys,
-                        value: 3,
-                      },
-                      {
-                        selector: GameStoreSelectors.cells,
-                        value: boardMock,
-                      }
-                    ],
-                  }),
-                GameService
-            ]
-        });
-
         const position: Position = {
             x: 0,
             y: 3
         };
         effects = TestBed.inject(GameEffects);
+        store = TestBed.inject(MockStore);
+        store.overrideSelector(
+          GameStoreSelectors.consecutiveBombs,
+          0
+        );
+        store.overrideSelector(
+          GameStoreSelectors.consecutiveSmileys,
+          3
+        );
+        store.overrideSelector(
+          GameStoreSelectors.cells,
+          boardMock
+        );
+
         actions$ = of(GameStoreActions.selectCell(position));
 
         obsSpy = subscribeSpyTo(effects.cellClicked$);
@@ -246,35 +191,25 @@ describe('Game effects', () => {
     });
 
     it('cellClicked$ dispatches turnPlayed', () => {
-        TestBed.configureTestingModule({
-            providers: [
-                GameEffects,
-                provideMockActions(() => actions$),
-                provideMockStore({
-                    selectors: [
-                      {
-                        selector: GameStoreSelectors.consecutiveBombs,
-                        value: 0,
-                      },
-                      {
-                        selector: GameStoreSelectors.consecutiveSmileys,
-                        value: 1,
-                      },
-                      {
-                        selector: GameStoreSelectors.cells,
-                        value: boardMock,
-                      }
-                    ],
-                  }),
-                GameService
-            ]
-        });
-
         const position: Position = {
             x: 0,
             y: 3
         };
         effects = TestBed.inject(GameEffects);
+        store = TestBed.inject(MockStore);
+        store.overrideSelector(
+          GameStoreSelectors.consecutiveBombs,
+          0
+        );
+        store.overrideSelector(
+          GameStoreSelectors.consecutiveSmileys,
+          1
+        );
+        store.overrideSelector(
+          GameStoreSelectors.cells,
+          boardMock
+        );
+
         actions$ = of(GameStoreActions.selectCell(position));
 
         obsSpy = subscribeSpyTo(effects.cellClicked$);

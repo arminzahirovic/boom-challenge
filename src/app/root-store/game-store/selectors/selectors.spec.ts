@@ -1,6 +1,6 @@
 import { expect } from '@jest/globals';
-import { Result } from 'src/app/game-feature/domain/Result.enum';
 
+import { Result } from 'src/app/game-feature/domain/Result.enum';
 import { boardMock } from 'src/test-data/board';
 import { GameStoreSelectors } from ".."
 import { initialGameState } from "../state"
